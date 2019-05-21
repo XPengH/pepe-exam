@@ -21,7 +21,6 @@
       <el-main>
         <el-table
           :data="tableData"
-          height="500"
           style="width: 100%">
           <el-table-column
             prop="name"
