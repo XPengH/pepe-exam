@@ -1,6 +1,7 @@
-export default function getData () {
+import {sales} from './data'
+export default function getData (cid) {
   //获取最近六个月月份
-  let month = new Date().getMonth() - 1
+  let month = new Date().getMonth() + 1
   let year = new Date().getFullYear()
   let monthData = [];
   for(let i = 0; i < 6; i++) {
@@ -17,6 +18,9 @@ export default function getData () {
   }
   return {
     color: ['#3398DB'],
+    title: {
+      text: '商品销量趋势图',
+    },
     tooltip : {
       trigger: 'axis',
       axisPointer : {    // 坐标轴指示器，坐标轴触发有效
@@ -44,7 +48,7 @@ export default function getData () {
       {
         type:'bar',
         barWidth: '60%',
-        data: [ 52, 200, 334, 390, 330, 220]
+        data: sales.filter((sale)=> parseInt(sale.id)===parseInt(cid))[0].sales
       }
     ]
   }

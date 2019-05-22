@@ -152,7 +152,7 @@ export default {
       this.total = 0
     },
     rowClick(rol, col, event) {
-      this.$router.push({ path: `/detail/${rol.id}` })
+      this.$router.push({ path: `/detail/${rol.id}`, query: { detail: JSON.stringify(rol) }})
     }
   },
   mounted() {
