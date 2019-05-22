@@ -1,21 +1,30 @@
 <template>
   <div class="dataDetail">
     <el-container class="container">
-      
-      <el-row>
-        <el-col><h3>商品名</h3></el-col>
-        <el-col>{{detail.name}}</el-col>
+      <el-row type="flex" align="middle">
+        <el-col :span="4"><h3>商品名</h3></el-col>
+        <el-col :span="20">{{detail.name}}</el-col>
       </el-row>
-      
-      <el-row><h3>类型</h3>{{detail.type}}</el-row>
-      <h3>价格</h3>
-      <el-row>{{detail.price}}</el-row>
-      <h3>数量</h3>
-      <el-row>{{detail.number}}</el-row>
-      <h3>生产厂商</h3>
-      <el-row>{{detail.company}}</el-row>
-      <h3>厂商地址</h3>
-      <el-row>{{detail.address}}</el-row>
+      <el-row type="flex" align="middle">
+        <el-col :span="4"><h3>类型</h3></el-col>
+        <el-col :span="20">{{detail.type}}</el-col>
+      </el-row>
+      <el-row type="flex" align="middle">
+        <el-col :span="4"><h3>价格</h3></el-col>
+        <el-col :span="20">{{detail.price}}</el-col>
+      </el-row>
+      <el-row type="flex" align="middle">
+        <el-col :span="4"><h3>数量</h3></el-col>
+        <el-col :span="20">{{detail.number}}</el-col>
+      </el-row>
+      <el-row type="flex" align="middle">
+        <el-col :span="4"><h3>生产厂商</h3></el-col>
+        <el-col :span="20">{{detail.company}}</el-col>
+      </el-row>
+      <el-row type="flex" align="middle">
+        <el-col :span="4"><h3>厂商地址</h3></el-col>
+        <el-col :span="20">{{detail.address}}</el-col>
+      </el-row>
       <div id="echarts" class="echartStyle"></div>
     </el-container>
   </div>
@@ -47,6 +56,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+h3{
+  font-size: 15px;
+  margin: 10px 0;
+}
 .dataDetail {
   padding: 30px;
 }
