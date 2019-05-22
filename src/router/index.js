@@ -8,11 +8,11 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/list/',
+      path: '/list',
       component: DataList,
     },
     {
-      path: '/detail/',
+      path: '/detail/:cid',
       component: DataDetail,
     }
   ]

@@ -1,7 +1,7 @@
 export const commodityList = [
   {
     "id": 0,
-    "name": "商品0",
+    "name": "商品0111111111111111111111",
     "type": "类型",
     "address": "梅陇二村0",
     "company": "生产厂商0",
@@ -900,7 +900,7 @@ export const commodityList = [
     "price": 199
   }
 ]
-  export const sales = [
+export const sales = [
     {
       "id": 0,
       "sales": [

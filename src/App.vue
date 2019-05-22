@@ -16,6 +16,5 @@ export default {
 #app{
   width: 100%;
   min-width: 760px;
-  overflow-x: scroll;
 }
 </style>
