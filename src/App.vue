@@ -1,13 +1,22 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
+  <div id="app" :style="[{'minWidth':isMobile?'100%':'760px'}]">
+    <router-view :isMobile="isMobile"></router-view>
   </div>
 </template>
 
 <script>
+import {isMobile} from './vendor/isMobile.js'
 export default {
   name: 'app',
-  components: {
+  data() {
+    return {
+      isMobile: false
+    }
+  },
+  created() {
+    if (isMobile()) {
+      this.isMobile = true
+    }
   }
 }
 </script>
@@ -15,6 +24,5 @@ export default {
 <style>
 #app{
   width: 100%;
-  min-width: 760px;
 }
 </style>

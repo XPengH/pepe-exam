@@ -1,31 +1,27 @@
 <template>
   <div class="dataDetail">
-    <el-container class="container">
-      <el-row type="flex" align="middle">
-        <el-col :span="4"><h3>商品名</h3></el-col>
-        <el-col :span="20">{{detail.name}}</el-col>
-      </el-row>
-      <el-row type="flex" align="middle">
-        <el-col :span="4"><h3>类型</h3></el-col>
-        <el-col :span="20">{{detail.type}}</el-col>
-      </el-row>
-      <el-row type="flex" align="middle">
-        <el-col :span="4"><h3>价格</h3></el-col>
-        <el-col :span="20">{{detail.price}}</el-col>
-      </el-row>
-      <el-row type="flex" align="middle">
-        <el-col :span="4"><h3>数量</h3></el-col>
-        <el-col :span="20">{{detail.number}}</el-col>
-      </el-row>
-      <el-row type="flex" align="middle">
-        <el-col :span="4"><h3>生产厂商</h3></el-col>
-        <el-col :span="20">{{detail.company}}</el-col>
-      </el-row>
-      <el-row type="flex" align="middle">
-        <el-col :span="4"><h3>厂商地址</h3></el-col>
-        <el-col :span="20">{{detail.address}}</el-col>
-      </el-row>
-      <div id="echarts" class="echartStyle"></div>
+    <el-container :class="[isMobile?'container':'pcContainer']">
+      <div style="width: 100%;">
+        <p>
+          商品名:&nbsp;{{detail.name}}
+        </p>
+        <p>
+          类型:&nbsp;{{detail.type}}
+        </p>
+        <p>
+          价格:&nbsp;{{detail.price}}(元)
+        </p>
+        <p>
+          数量:&nbsp;{{detail.number}}(件)
+        </p>
+        <p>
+          生产厂商:&nbsp;{{detail.company}}生产厂商:&nbsp;
+        </p>
+        <p>
+          厂商地址:&nbsp;{{detail.address}}
+        </p>
+      </div>
+      <div id="echarts" :class="[isMobile?'echartMobileStyle':'echartStyle']"></div>
     </el-container>
   </div>
 </template>
@@ -40,6 +36,7 @@ export default {
       detail: {}
     };
   },
+  props: ['isMobile'],
   mounted() {
     if (this.$route.params.cid!==undefined) {
       // 基于准备好的dom，初始化echarts实例
@@ -61,20 +58,31 @@ h3{
   margin: 10px 0;
 }
 .dataDetail {
-  padding: 30px;
+  padding: 30px 0;
+}
+p{
+  padding: 0px 10px;
+}
+.pcContainer{
+  padding: 0 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 .container{
   display: flex;
   flex-direction: column;
+  padding: 0;
 }
 .echartStyle {
   height: 400px;
   width: 500px;
+  margin-top: 30px;
 }
-@media only screen and (max-width: 600px) {
-  .echartStyle {
-    width: 100vw;
-    height: 100vh;
-  }
+.echartMobileStyle {
+  width: 100vw;
+  height: 60vh;
+  margin-top: 30px;
 }
 </style>

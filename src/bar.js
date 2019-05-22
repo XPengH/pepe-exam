@@ -20,6 +20,7 @@ export default function getData (cid) {
     color: ['#3398DB'],
     title: {
       text: '商品销量趋势图',
+      left: 'center',
     },
     tooltip : {
       trigger: 'axis',
@@ -30,11 +31,16 @@ export default function getData (cid) {
     },
     xAxis: [
       {
-        name: '年/月',
+        name: '月份',
+        nameGap: 5,
         type: 'category',
         data: monthData.reverse(),
         axisTick: {
           alignWithLabel: true
+        },
+        axisLabel: {
+          interval:0,
+          rotate:40
         }
       }
     ],

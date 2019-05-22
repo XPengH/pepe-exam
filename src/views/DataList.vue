@@ -1,25 +1,26 @@
 <template>
   <div class="dataList">
     <el-container v-loading="loading">
-      <el-header :height="headerHeight" style="margin-top: 50px">
+      <el-header class="elHeader" :height="headerHeight" style="margin-top: 50px">
         <el-input
           placeholder="请输入搜索内容"
           v-model="input"
-          @blur="searchChangeTable"
           clearable>
         </el-input>
+        <el-button  icon="el-icon-search" type="primary" @click="searchChangeTable">搜索</el-button>
       </el-header>
       <el-main>
         <el-table
           ref="table"
           :data="tableData"
-          :height="tableHeight"
+          :height="isMobile?400:500"
           @sort-change="sortChange"
           @row-click="rowClick"
           border
           stripe
           style="width: 100%">
           <el-table-column
+            v-if="!isMobile"
             type="index"
             :index="indexMethod">
           </el-table-column>
@@ -52,8 +53,11 @@
           @current-change="handleCurrentChange"
           :current-page="currentPage"
           :page-sizes="pagesize"
+          :pager-count="isMobile?5:7"
+          :prev-text="isMobile?'上一页':''"
+          :next-text="isMobile?'下一页':''"
           :page-size="currentpagesize"
-          layout="total, sizes, prev, pager, next, jumper"
+          :layout="isMobile?'prev, pager, next':'total, sizes, prev, pager, next, jumper'"
           :total="total">
         </el-pagination> 
       </el-footer>
@@ -76,12 +80,12 @@ export default {
       tableData: [],
       commodityList,
       input: '',
-      tableHeight: 500,
       headerHeight: '50px',
-      footerHeight: '30px',
+      footerHeight: '40px',
       sortOrders: ['ascending', 'descending', null]
     };
   },
+  props: ['isMobile'],
   methods: {
     indexMethod(index) {
       return index + 1 + (this.currentPage-1) * this.currentpagesize
@@ -156,6 +160,7 @@ export default {
     }
   },
   mounted() {
+    console.log(this.isMobile)
     setTimeout(()=>{
       this.total = commodityList.length
       this.changeTableData()
@@ -169,5 +174,11 @@ export default {
 <style scoped>
 .elPagination{
   text-align: center;
+}
+.elHeader{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 </style>
